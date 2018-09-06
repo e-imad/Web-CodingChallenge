@@ -55,7 +55,7 @@ h1,h2,h3,h4,h5,h6 {
           <table>
               <tr><td colspan="3" align="center" height="100"><small><% out.print(a.getName());%></small><td></tr>
               <tr><td colspan="3" align="center"><img src="<% out.print(a.getIconUrl()); %>" alt="" /></td></tr>
-              <tr><td align="center" width="60px"></td><td align="center" ><img src="css/images/pin.png" alt="like" width="40px" /></td><td align="center" width="60px"></tr>
+              <tr><td align="center" width="60px"></td><td align="center" ><img src="css/images/cross.png" alt="like" width="40px" /></td><td align="center" width="60px"></tr>
           </table>
           </div>
           

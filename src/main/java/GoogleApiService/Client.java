@@ -15,17 +15,18 @@ import se.walkercrou.places.Place;
  * @author imad
  */
 public class Client {
-    public static List<Place> getPlaces()
+    public static List<Place> getPlaces(double lng,double lat)
     {
          GooglePlaces client = new GooglePlaces("AIzaSyCDA46HYMy-6rFKDPQyRIn0NyxUQy-Q-2o");
-         List<Place> places = client.getNearbyPlaces(33.9954233, -6.8522169, 80000,40,Param.name("type").value("shopping_mall"),Param.name("rankedby").value("distance"));
+        
+         List<Place> places = client.getNearbyPlaces(lng, lat, 8000,40,Param.name("type").value("shopping_mall"),Param.name("rankedby").value("distance"));
 
     
        return places;
     }
     public static void main(String[] args)
     {
-        for(Place a : Client.getPlaces())
+        for(Place a : Client.getPlaces(33.9954233,-6.8522169))
             System.out.println(a.getName());
     }
         

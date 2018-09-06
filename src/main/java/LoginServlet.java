@@ -80,12 +80,14 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String un=request.getParameter("login");
 		String pw=request.getParameter("password");
+                double lat=Double.parseDouble(request.getParameter("lat"));
+                double lng=Double.parseDouble(request.getParameter("lng"));
                 HttpSession session =request.getSession();
 		User a=UserData.findUser(un);
 		if(a!=null && a.getPassword().equals(pw))
 		{
                     
-                       session.setAttribute("places",Client.getPlaces());
+                       session.setAttribute("places",Client.getPlaces(lat,lng));
                        a.setPassword("");
                        Likes like=new Likes(a.getEmail(),1);
                        Likes dislike=new Likes(a.getEmail(),1);

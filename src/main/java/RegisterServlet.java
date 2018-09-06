@@ -57,7 +57,9 @@ public class RegisterServlet extends HttpServlet {
 		if(UserData.AddUser(un,pw))                
                 {
                     User a=UserData.findUser(un);
-                    session.setAttribute("places",Client.getPlaces());
+                    double lat=Double.parseDouble(request.getParameter("lat"));
+                    double lng=Double.parseDouble(request.getParameter("lng"));
+                    session.setAttribute("places",Client.getPlaces(lat,lng));
                     session.setAttribute("user", a);
                     a.setPassword("");
                     session.setAttribute("error", null);
