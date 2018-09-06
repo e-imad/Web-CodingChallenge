@@ -36,7 +36,6 @@ h1,h2,h3,h4,h5,h6 {
     <div class="w3-right w3-hide-small">
       <a href="index.jsp" class="w3-bar-item w3-button">Home</a>
       <a href="logout.jsp" class="w3-bar-item w3-button">Disconnect</a>      
-      <a href="#contact" class="w3-bar-item w3-button">Disliked</a>
     </div>
   </div>
 </div>

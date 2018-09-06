@@ -34,9 +34,8 @@ h1,h2,h3,h4,h5,h6 {
     <a href="#home" class="w3-bar-item w3-button">Close Shops</a>
     <!-- Right-sided navbar links. Hide them on small screens -->
     <div class="w3-right w3-hide-small">
-      <a href="logout.jsp" class="w3-bar-item w3-button">Disconnect</a>
-      <a href="favorites.jsp" class="w3-bar-item w3-button">Favorite</a>
-      <a href="#contact" class="w3-bar-item w3-button">Disliked</a>
+           <a href="favorites.jsp" class="w3-bar-item w3-button">Favorite</a>
+            <a href="logout.jsp" class="w3-bar-item w3-button">Disconnect</a>
     </div>
   </div>
 </div>
