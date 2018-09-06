@@ -34,8 +34,8 @@ h1,h2,h3,h4,h5,h6 {
     <a href="#home" class="w3-bar-item w3-button">Close Shops</a>
     <!-- Right-sided navbar links. Hide them on small screens -->
     <div class="w3-right w3-hide-small">
-      <a href="logout.jsp" class="w3-bar-item w3-button">Disconnect</a>
-      <a href="favorites.jsp" class="w3-bar-item w3-button">Favorite</a>
+      <a href="index.jsp" class="w3-bar-item w3-button">Home</a>
+      <a href="logout.jsp" class="w3-bar-item w3-button">Disconnect</a>      
       <a href="#contact" class="w3-bar-item w3-button">Disliked</a>
     </div>
   </div>
@@ -45,10 +45,9 @@ h1,h2,h3,h4,h5,h6 {
         <div class="wrapper">
         <% 
             Likes b=(Likes)session.getAttribute("like");
-            Likes c=(Likes)session.getAttribute("dislike");
         for(Place a: (List<Place>) session.getAttribute("places"))
         {
-            if(!b.exist(a.getPlaceId())&& !c.exist(a.getPlaceId()))
+            if(b.exist(a.getPlaceId()))
             {
                 
           %>
@@ -57,7 +56,7 @@ h1,h2,h3,h4,h5,h6 {
           <table>
               <tr><td colspan="3" align="center" height="100"><small><% out.print(a.getName());%></small><td></tr>
               <tr><td colspan="3" align="center"><img src="<% out.print(a.getIconUrl()); %>" alt="" /></td></tr>
-              <tr><td align="center" width="60px"><img src="css/images/like.png" alt="like" width="40px"  onclick= "initForm('<% out.print(a.getPlaceId());%>')"/></td><td align="center" ><img src="css/images/pin.png" alt="like" width="40px" /></td><td align="center" width="60px"><img src="css/images/dislike.png" alt="dislike" width="40px" onclick= "initForm2('<% out.print(a.getPlaceId());%>')"/></td></tr>
+              <tr><td align="center" width="60px"></td><td align="center" ><img src="css/images/pin.png" alt="like" width="40px" /></td><td align="center" width="60px"></tr>
           </table>
           </div>
           
@@ -67,28 +66,5 @@ h1,h2,h3,h4,h5,h6 {
         %>
         </div>
   </div>
-        <form id="like" method="Post"  action="LikedServlet" hidden="true">
-            <input type="text" name="ID" value="">
-            <input type="submit"  >
-        </form>
-         <form id="dislike" method="Post"  action="Disliked" hidden="true">
-            <input type="text" name="ID" value="">
-            <input type="submit"  >
-        </form>
-           </body>
-           <script  type="text/javascript">
-               function initForm(v){
-               oFormObject = document.forms['like'];
-               oFormObject.elements["ID"].value = v;
-               var newForm = document.getElementById("like")
-               newForm.submit();
-           }
-           function initForm2(v){
-               oFormObject = document.forms['dislike'];
-               oFormObject.elements["ID"].value = v;
-               var newForm = document.getElementById("dislike")
-               newForm.submit();
-           }
-
-               </script>
+       
 </html>

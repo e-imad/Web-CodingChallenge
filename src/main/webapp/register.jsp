@@ -19,7 +19,11 @@
             <input type="email" name="login" placeholder="E-mail" required="true">
             <input type="password" name="password" placeholder="Password" required="true">
             <input type="submit" name="Register" class="login login-submit" value="Register">
-           
+             <%if(session.getAttribute("error")!=null)
+                {
+                    out.print("<p style=\"color:red;\">"+ session.getAttribute("error")+"</p>");
+                }
+                %>
         </form>
         </div>
     

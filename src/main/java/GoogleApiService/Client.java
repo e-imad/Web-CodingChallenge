@@ -18,7 +18,7 @@ public class Client {
     public static List<Place> getPlaces()
     {
          GooglePlaces client = new GooglePlaces("AIzaSyCDA46HYMy-6rFKDPQyRIn0NyxUQy-Q-2o");
-    List<Place> places = client.getNearbyPlaces(33.9954233, -6.8522169, 80000,40,Param.name("type").value("shopping_mall"),Param.name("rankedby").value("distance"));
+         List<Place> places = client.getNearbyPlaces(33.9954233, -6.8522169, 80000,40,Param.name("type").value("shopping_mall"),Param.name("rankedby").value("distance"));
 
     
        return places;

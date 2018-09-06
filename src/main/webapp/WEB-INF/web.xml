@@ -12,6 +12,14 @@
         <servlet-name>RegisterServlet</servlet-name>
         <servlet-class>RegisterServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LikedServlet</servlet-name>
+        <servlet-class>LikedServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Disliked</servlet-name>
+        <servlet-class>Disliked</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Servlet1</servlet-name>
         <url-pattern>/Servlet1</url-pattern>
@@ -23,6 +31,14 @@
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
         <url-pattern>/RegisterServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LikedServlet</servlet-name>
+        <url-pattern>/LikedServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Disliked</servlet-name>
+        <url-pattern>/Disliked</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

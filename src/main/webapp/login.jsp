@@ -20,6 +20,12 @@
             <input type="password" name="password" placeholder="Password" required="true">
             <input type="submit" name="login" class="login login-submit" value="login">
              <a href="register.jsp">Register</a>
+            <%
+                if(session.getAttribute("error")!=null)
+                {
+                    out.print("<p style=\"color:red;\">"+ session.getAttribute("error")+"</p>");
+                }
+                %>
         </form>
         </div>
     

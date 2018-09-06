@@ -6,12 +6,14 @@
 
 import Class.User;
 import Class.UserData;
+import GoogleApiService.Client;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -51,8 +53,23 @@ public class RegisterServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String un=request.getParameter("login");
 		String pw=request.getParameter("password");
-		UserData.AddUser(un,pw);
-                User a=UserData.findUser(un);
+                HttpSession session =request.getSession();
+		if(UserData.AddUser(un,pw))                
+                {
+                    User a=UserData.findUser(un);
+                    session.setAttribute("places",Client.getPlaces());
+                    session.setAttribute("user", a);
+                    a.setPassword("");
+                    session.setAttribute("error", null);
+                    response.sendRedirect("index.jsp");
+                    
+                }
+                else
+                {
+                     session.setAttribute("error","utilisateur déja inscrit");
+                     response.sendRedirect("register.jsp");
+                     
+                }
                 
                 
 	}
