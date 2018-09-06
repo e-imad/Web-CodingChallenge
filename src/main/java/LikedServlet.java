@@ -52,14 +52,26 @@ public class LikedServlet extends HttpServlet {
         }
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String id=request.getParameter("ID");
-                HttpSession session =request.getSession();
-                User a=(User) session.getAttribute("user");
-                String user=a.getEmail();
-                LikeID.AddLike(user, id);
-                Likes b=new Likes(a.getEmail(),1);
-                session.setAttribute("like",b);
-                response.sendRedirect("index.jsp");
+                    String id=request.getParameter("ID");
+                    HttpSession session =request.getSession();
+                    User a=(User) session.getAttribute("user");
+                    String user=a.getEmail();	
+                if(request.getParameter("remove")==null||!request.getParameter("remove").equals("true"))
+                {
+
+                    LikeID.AddLike(user, id);
+                    Likes b=new Likes(a.getEmail(),1);
+                    session.setAttribute("like",b);
+                    response.sendRedirect("index.jsp");
+                }
+                else
+                {
+                    
+                    LikeID.RemoveLike(user, id);
+                    Likes b=new Likes(a.getEmail(),1);
+                    session.setAttribute("like",b);
+                    response.sendRedirect("favorites.jsp");
+                }
 		
                 
 	}

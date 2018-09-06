@@ -37,6 +37,27 @@ public class LikeID {
 
         
     }
+    public static boolean RemoveLike(String username, String Ref)
+    {
+        try{
+         Connection con=Database.Database();
+        Statement st=(Statement) con.createStatement();        
+        System.err.println("Delete FROM liked WHERE user = '"+username+"' AND LocationId = '"+Ref+"' ");
+        st.execute("Delete FROM liked WHERE user = '"+username+"' AND LocationId = '"+Ref+"' "); 
+            
+       
+      
+        con.close(); 
+        
+        return true;
+        } catch(Exception e)
+        {
+            e.printStackTrace();
+            return false;
+        }
+
+        
+    }
      public static boolean AddDisLike(String username, String Ref) 
     {
         try{
@@ -74,12 +95,13 @@ public class LikeID {
         }
         return null;
     }
+     
       public static ArrayList<String> getDisLikes(String username)
     {
         try {
             Connection con=Database.Database();
             Statement st=(Statement) con.createStatement();
-            ResultSet rs=st.executeQuery("select * from disliked where user='"+username+"' and time >=DATE_SUB(NOW( ),INTERVAL 2 HOUR)");
+            ResultSet rs=st.executeQuery("select * from disliked where user='"+username+"' and time =DATE_SUB(NOW( ),INTERVAL 2 HOUR)");
             ArrayList<String> A=new ArrayList();
             while(rs.next())
             {
@@ -92,6 +114,10 @@ public class LikeID {
         }
         return null;
     }
+      public static void main(String[] args)
+      {
+          LikeID.RemoveLike("imad@imad.com","ChIJ3TE16cSTnQ0RCNlB9UliunI" );
+      }
         
     }
     

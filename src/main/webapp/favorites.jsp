@@ -43,7 +43,11 @@ h1,h2,h3,h4,h5,h6 {
   
         <div class="wrapper">
         <% 
-            Likes b=(Likes)session.getAttribute("like");
+            Likes b=(Likes)session.getAttribute("like"); 
+            if(b.getIdLocation().size()==0)
+            {
+        %><script>document.location.href="/NearbyShops/";</script><%
+            }
         for(Place a: (List<Place>) session.getAttribute("places"))
         {
             if(b.exist(a.getPlaceId()))
@@ -55,7 +59,7 @@ h1,h2,h3,h4,h5,h6 {
           <table>
               <tr><td colspan="3" align="center" height="100"><small><% out.print(a.getName());%></small><td></tr>
               <tr><td colspan="3" align="center"><img src="<% out.print(a.getIconUrl()); %>" alt="" /></td></tr>
-              <tr><td align="center" width="60px"></td><td align="center" ><img src="css/images/cross.png" alt="like" width="40px" /></td><td align="center" width="60px"></tr>
+              <tr><td align="center" width="60px"></td><td align="center" ><img src="css/images/cross.png" alt="like" width="40px" onclick= "initForm('<% out.print(a.getPlaceId());%>')" /></td><td align="center" width="60px"></tr>
           </table>
           </div>
           
@@ -63,6 +67,20 @@ h1,h2,h3,h4,h5,h6 {
        <% }
             }
         %>
+         <form id="like" method="Post"  action="LikedServlet" hidden="true">
+            <input type="text" name="ID" value="">
+            <input type="text" name="remove" value="true">
+            <input type="submit"  >
+        </form>
+           </body>
+           <script  type="text/javascript">
+               function initForm(v){
+               oFormObject = document.forms['like'];
+               oFormObject.elements["ID"].value = v;
+               var newForm = document.getElementById("like");
+               newForm.submit();
+           }
+           </script>
         </div>
   </div>
        
