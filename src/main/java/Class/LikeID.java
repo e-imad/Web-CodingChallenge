@@ -102,7 +102,7 @@ public class LikeID {
             Connection con=Database.Database();
             Statement st=(Statement) con.createStatement(); 
             // we only recover dislikes that the user has made in the last 2 hours.
-            ResultSet rs=st.executeQuery("select * from disliked where user='"+username+"' and time =DATE_SUB(NOW( ),INTERVAL 2 HOUR)");
+            ResultSet rs=st.executeQuery("select * from disliked where user='"+username+"' and time >=DATE_SUB(NOW( ),INTERVAL 2 HOUR)");
             ArrayList<String> A=new ArrayList();
             while(rs.next())
             {

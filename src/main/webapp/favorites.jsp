@@ -61,7 +61,7 @@ h1,h2,h3,h4,h5,h6 {
           <table>
               <tr><td colspan="3" align="center" height="100"><small><% out.print(a.getName());%></small><td></tr>
               <tr><td colspan="3" align="center"><img src="<% out.print(a.getIconUrl()); %>" alt="" /></td></tr>
-              <tr><td align="center" width="60px"></td><td align="center" ><img src="css/images/cross.png" alt="like" width="40px" onclick= "initForm('<% out.print(a.getPlaceId());%>')" /></td><td align="center" width="60px"></tr>
+              <tr><td align="center" width="60px"><img src="css/images/cross.png" alt="like" width="40px" onclick= "initForm('<% out.print(a.getPlaceId());%>')" /></td><td align="center" ><img src="css/images/pin.png" alt="like" width="40px" onclick= "map('<% out.print(a.getPlaceId());%>')"/></td><td align="center" width="60px"></tr>
           </table>
           </div>
           
@@ -82,6 +82,11 @@ h1,h2,h3,h4,h5,h6 {
                oFormObject.elements["ID"].value = v;
                var newForm = document.getElementById("like");
                newForm.submit();
+           }
+           function map(v)
+           {
+               popupWindow = window.open('map.html?ref='+v, 'name', 'width=700,height=350');
+               popupWindow.focus();
            }
            </script>
         </div>

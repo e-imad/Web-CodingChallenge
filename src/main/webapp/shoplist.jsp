@@ -58,7 +58,7 @@ h1,h2,h3,h4,h5,h6 {
         {
         for(Place a: (List<Place>) session.getAttribute("places"))
         {
-            if(!b.exist(a.getPlaceId())&& !c.exist(a.getPlaceId()))
+            if((b==null ||!b.exist(a.getPlaceId()))&& (c==null || !c.exist(a.getPlaceId())))
             {
                 
           %>
@@ -67,7 +67,7 @@ h1,h2,h3,h4,h5,h6 {
           <table>
               <tr><td colspan="3" align="center" height="100"><small><% out.print(a.getName());%></small><td></tr>
               <tr><td colspan="3" align="center"><img src="<% out.print(a.getIconUrl()); %>" alt="" /></td></tr>
-              <tr><td align="center" width="60px"><img src="css/images/like.png" alt="like" width="40px"  onclick= "initForm('<% out.print(a.getPlaceId());%>')"/></td><td align="center" ><img src="css/images/pin.png" alt="like" width="40px" /></td><td align="center" width="60px"><img src="css/images/dislike.png" alt="dislike" width="40px" onclick= "initForm2('<% out.print(a.getPlaceId());%>')"/></td></tr>
+              <tr><td align="center" width="60px"><img src="css/images/like.png" alt="like" width="40px"  onclick= "initForm('<% out.print(a.getPlaceId());%>')"/></td><td align="center" ><img src="css/images/pin.png" alt="like" width="40px" onclick= "map('<% out.print(a.getPlaceId());%>')"/></td><td align="center" width="60px"><img src="css/images/dislike.png" alt="dislike" width="40px" onclick= "initForm2('<% out.print(a.getPlaceId());%>')"/></td></tr>
           </table>
           </div>
           
@@ -104,6 +104,10 @@ h1,h2,h3,h4,h5,h6 {
                var newForm = document.getElementById("dislike")
                newForm.submit();
            }
-
+           function map(v)
+           {
+               popupWindow = window.open('map.html?ref='+v, 'name', 'width=700,height=350');
+               popupWindow.focus();
+           }
                </script>
 </html>

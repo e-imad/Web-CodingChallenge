@@ -22,7 +22,7 @@ public class Client {
          List<Place> places =null;
          // recovering the closest shops to the provided coordinates
         try{
-          places = client.getNearbyPlaces(lng, lat, 80000,40,Param.name("type").value("shopping_mall"),Param.name("rankedby").value("distance"));
+          places = client.getNearbyPlaces(lng, lat, 8000,40,Param.name("type").value("shopping_mall"),Param.name("rankedby").value("distance"));
         }catch(Exception e)
         {
             e.printStackTrace();
