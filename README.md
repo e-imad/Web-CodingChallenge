@@ -1,9 +1,9 @@
 # Nearby shops  
-A web application providing its users with informations on the closest shops near them using their current location as the center of the scan. The app user has the capability to choose  shops they like and those he doesn't.
+A web application providing its users with informations on the closest shops near them using their current location as the center of the scan. The app user has the capability to choose  shops he likes and those he doesn't.
 
-The user is required to give permetion to get his location for the app to work, if he doesn't the search will take ***null island with the latitude:0 and longitude:0*** as the center of the search.
+The user is required to give permission to get his location for the app to work, if he doesn't the search will take ***null island with the latitude:0 and longitude:0*** as the center of the search.
 
-During the first access the user needs to register inorder to be able to access app's services.
+During the first access the user needs to register in order to be able to access apps services.
 
 ## Project Deployement: 
 - mysql-connector in order to connect to the mysql database, this api can be added to the project manually or by adding the dependency to your maven pom.xml for example : 
@@ -14,7 +14,7 @@ During the first access the user needs to register inorder to be able to access 
     <version>5.1.6</version>
 </dependency>
 ```
-you need to create a database and create the required tables using the provided sql files, then you need to update the connection with the database information in the 'Database.java' class: 
+You need to create a database and create the required tables using the provided sql files, then you need to update the connection with the database information in the 'Database.java' class: 
 ```java
  Class.forName("com.mysql.jdbc.Driver");  
             Connection con=(Connection) DriverManager.getConnection(  
