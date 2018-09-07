@@ -26,7 +26,16 @@ h1,h2,h3,h4,h5,h6 {
     letter-spacing: 5px;
 }
 </style>
-<body>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#dialog" ).dialog();
+  } );
+  </script>
+    <body>
 
 <!-- Navbar (sit on top) -->
 <div class="w3-top">
@@ -45,6 +54,8 @@ h1,h2,h3,h4,h5,h6 {
         <% 
             Likes b=(Likes)session.getAttribute("like");
             Likes c=(Likes)session.getAttribute("dislike");
+        if(session.getAttribute("places")!= null)
+        {
         for(Place a: (List<Place>) session.getAttribute("places"))
         {
             if(!b.exist(a.getPlaceId())&& !c.exist(a.getPlaceId()))
@@ -63,6 +74,11 @@ h1,h2,h3,h4,h5,h6 {
              
        <% }
             }
+}else{
+       %> <div id="dialog" title="Basic dialog">
+           <p>No shops were found near your location,<p style="color: red"> if you did not allow geolocalisation please allow it for the application to work.</p></p>
+</div> <%
+}
         %>
         </div>
   </div>

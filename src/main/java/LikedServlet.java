@@ -52,23 +52,31 @@ public class LikedServlet extends HttpServlet {
         }
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+                  // recovering the placeID
                     String id=request.getParameter("ID");
                     HttpSession session =request.getSession();
+                    // recovering the user's email
                     User a=(User) session.getAttribute("user");
                     String user=a.getEmail();	
+                    
                 if(request.getParameter("remove")==null||!request.getParameter("remove").equals("true"))
-                {
-
+                {// if the request is to add a liked place to the data base
+                    // adding the like place to the data base
                     LikeID.AddLike(user, id);
+                    //recovering the list of liked places
                     Likes b=new Likes(a.getEmail(),1);
+                    //setting the like attribute in the session with the new results
                     session.setAttribute("like",b);
                     response.sendRedirect("index.jsp");
                 }
                 else
                 {
-                    
+                  // if the request is to remove a liked place to the data base
+                    // removing the like place to the data base
                     LikeID.RemoveLike(user, id);
+                    //recovering the list of liked places
                     Likes b=new Likes(a.getEmail(),1);
+                    //setting the like attribute in the session with the new results
                     session.setAttribute("like",b);
                     response.sendRedirect("favorites.jsp");
                 }

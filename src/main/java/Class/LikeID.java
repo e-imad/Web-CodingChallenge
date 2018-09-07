@@ -18,6 +18,7 @@ import java.util.logging.Logger;
  * @author imad
  */
 public class LikeID {
+    
     public static boolean AddLike(String username, String Ref)
     {
         try{
@@ -42,7 +43,6 @@ public class LikeID {
         try{
          Connection con=Database.Database();
         Statement st=(Statement) con.createStatement();        
-        System.err.println("Delete FROM liked WHERE user = '"+username+"' AND LocationId = '"+Ref+"' ");
         st.execute("Delete FROM liked WHERE user = '"+username+"' AND LocationId = '"+Ref+"' "); 
             
        
@@ -100,7 +100,8 @@ public class LikeID {
     {
         try {
             Connection con=Database.Database();
-            Statement st=(Statement) con.createStatement();
+            Statement st=(Statement) con.createStatement(); 
+            // we only recover dislikes that the user has made in the last 2 hours.
             ResultSet rs=st.executeQuery("select * from disliked where user='"+username+"' and time =DATE_SUB(NOW( ),INTERVAL 2 HOUR)");
             ArrayList<String> A=new ArrayList();
             while(rs.next())
@@ -114,10 +115,7 @@ public class LikeID {
         }
         return null;
     }
-      public static void main(String[] args)
-      {
-          LikeID.RemoveLike("imad@imad.com","ChIJ3TE16cSTnQ0RCNlB9UliunI" );
-      }
+    
         
     }
     

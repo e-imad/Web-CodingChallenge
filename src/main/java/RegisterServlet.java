@@ -51,14 +51,20 @@ public class RegisterServlet extends HttpServlet {
     }
      @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String un=request.getParameter("login");
+		// recovering the user's registring informations
+                String un=request.getParameter("login");
 		String pw=request.getParameter("password");
                 HttpSession session =request.getSession();
+                //adding the user to the database
 		if(UserData.AddUser(un,pw))                
                 {
+                    //if the insertion is successful: 
+                       
                     User a=UserData.findUser(un);
+                    // recovering the coordinates
                     double lat=Double.parseDouble(request.getParameter("lat"));
                     double lng=Double.parseDouble(request.getParameter("lng"));
+                    // recovering the closest shops to the coordinates and setting the session variables
                     session.setAttribute("places",Client.getPlaces(lat,lng));
                     session.setAttribute("user", a);
                     a.setPassword("");
@@ -68,7 +74,8 @@ public class RegisterServlet extends HttpServlet {
                 }
                 else
                 {
-                     session.setAttribute("error","utilisateur déja inscrit");
+                    // if the insertion has failed the user is notified that the email is already used.
+                     session.setAttribute("error","a user already exist with the specified email");
                      response.sendRedirect("register.jsp");
                      
                 }

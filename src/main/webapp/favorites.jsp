@@ -43,6 +43,8 @@ h1,h2,h3,h4,h5,h6 {
   
         <div class="wrapper">
         <% 
+              if(session.getAttribute("places")!= null)
+        {
             Likes b=(Likes)session.getAttribute("like"); 
             if(b.getIdLocation().size()==0)
             {
@@ -66,6 +68,7 @@ h1,h2,h3,h4,h5,h6 {
              
        <% }
             }
+}
         %>
          <form id="like" method="Post"  action="LikedServlet" hidden="true">
             <input type="text" name="ID" value="">

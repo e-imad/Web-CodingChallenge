@@ -17,19 +17,19 @@ import se.walkercrou.places.Place;
 public class Client {
     public static List<Place> getPlaces(double lng,double lat)
     {
+        // initialising the google API with the API key
          GooglePlaces client = new GooglePlaces("AIzaSyCDA46HYMy-6rFKDPQyRIn0NyxUQy-Q-2o");
-        
-         List<Place> places = client.getNearbyPlaces(lng, lat, 8000,40,Param.name("type").value("shopping_mall"),Param.name("rankedby").value("distance"));
-
+         List<Place> places =null;
+         // recovering the closest shops to the provided coordinates
+        try{
+          places = client.getNearbyPlaces(lng, lat, 80000,40,Param.name("type").value("shopping_mall"),Param.name("rankedby").value("distance"));
+        }catch(Exception e)
+        {
+            e.printStackTrace();
+        }
     
        return places;
     }
-    public static void main(String[] args)
-    {
-        for(Place a : Client.getPlaces(33.9954233,-6.8522169))
-            System.out.println(a.getName());
-    }
-        
    
     
     

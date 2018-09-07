@@ -50,12 +50,17 @@ public class Disliked extends HttpServlet {
         }
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String id=request.getParameter("ID");
+		// getting the place id
+                String id=request.getParameter("ID");
                 HttpSession session =request.getSession();
+                //recovering the users Email
                 User a=(User) session.getAttribute("user");
                 String user=a.getEmail();
+                // adding dislike to the database
                 LikeID.AddDisLike(user, id);
+                // recovering the dislike list for the last 2 hours from the database
                 Likes b=new Likes(a.getEmail(),2);
+                // setting the session attribute value
                 session.setAttribute("dislike",b);
                 response.sendRedirect("index.jsp");
 		

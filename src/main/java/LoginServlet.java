@@ -78,19 +78,27 @@ public class LoginServlet extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String un=request.getParameter("login");
+		// recovering the users login inforation
+                String un=request.getParameter("login");
 		String pw=request.getParameter("password");
+                // recovering the user's latitude and longetude 
+                    //if the user refuses to allow the geolocalisation, latitude and longitude are set to 0 to handle the exception.
                 double lat=Double.parseDouble(request.getParameter("lat"));
                 double lng=Double.parseDouble(request.getParameter("lng"));
                 HttpSession session =request.getSession();
+                // check if the user exist in the database
 		User a=UserData.findUser(un);
 		if(a!=null && a.getPassword().equals(pw))
 		{
-                    
+                    // if the user exist and the login informations are correct
+                        // recovering the list of the closest shops in the area
                        session.setAttribute("places",Client.getPlaces(lat,lng));
                        a.setPassword("");
+                       // recovering the list of likes 
                        Likes like=new Likes(a.getEmail(),1);
+                       // recovering the list of dislikes
                        Likes dislike=new Likes(a.getEmail(),1);
+                       // setting the session variables
                        session.setAttribute("user", a);
                        session.setAttribute("like", like);
                        session.setAttribute("dislike", like);
@@ -99,7 +107,8 @@ public class LoginServlet extends HttpServlet {
 		}
                 else
                 {
-                    session.setAttribute("error","Email ou mot de passe erroné");
+                    // if the login informations are incorrect the user is request retry
+                    session.setAttribute("error","Login informations are incorrect");
                 }
 		
 			response.sendRedirect("index.jsp");

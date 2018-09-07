@@ -21,6 +21,7 @@ public class Database {
     public static Connection Database() 
     {
         try{  
+            // initialising database information and returning the connection
             Class.forName("com.mysql.jdbc.Driver");  
             Connection con=(Connection) DriverManager.getConnection(  
             "jdbc:mysql://localhost:3306/codingchallenge","root","");   

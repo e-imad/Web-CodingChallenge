@@ -18,6 +18,10 @@ import java.util.ArrayList;
  *
  * @author imad
  */
+
+// class that handles all the request to the database related to the user:
+//   -- login
+//   -- Registration
 public class UserData {
     public static User findUser(String username)
     {

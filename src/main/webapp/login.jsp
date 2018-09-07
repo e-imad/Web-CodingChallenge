@@ -18,8 +18,8 @@
         <form name="login" method="post" action="LoginServlet">
             <input type="email" name="login" placeholder="E-mail" required="true">
             <input type="password" name="password" placeholder="Password" required="true">
-            <input type="text" name="lat" value="33.9954233" hidden="true">
-            <input type="text" name="lng"   value=" -6.8522169" hidden="true" >
+            <input type="text" name="lat" value="33.9536224" hidden="true">
+            <input type="text" name="lng"   value="-6.8933927,16" hidden="true" >
             <input type="submit" name="login" class="login login-submit" value="login">
              <a href="register.jsp">Register</a>
             <%
