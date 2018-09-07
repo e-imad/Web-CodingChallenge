@@ -3,6 +3,8 @@ A web application providing its users with informations on the closest shops nea
 
 The user is required to give permetion to get his location for the app to work, if he doesn't the search will take ***null island with the latitude:0 and longitude:0*** as the center of the search.
 
+during the first access the user needs to register inorder to be able to access the data file.
+
 ## Project Deployement: 
 - mysql-connector in order to connect to the mysql database, this api can be added to the project manually or by adding the dependency to your maven pom.xml for example : 
 ```
